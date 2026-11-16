@@ -26,6 +26,7 @@ class UsersControllerTest extends TestCase
         'app.OrderStatusHistories',
         'app.Orders',
         'app.Payments',
+        'app.UserRoles',
     ];
 
     /**

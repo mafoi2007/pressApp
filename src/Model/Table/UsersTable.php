@@ -49,6 +49,11 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Roles', [
+            'foreignKey' => 'role_id',
+            'className' => 'UserRoles',
+            'joinType' => 'INNER',
+        ]);
         $this->hasMany('OrderStatusHistories', [
             'foreignKey' => 'user_id',
         ]);
@@ -57,6 +62,10 @@ class UsersTable extends Table
         ]);
         $this->hasMany('Payments', [
             'foreignKey' => 'user_id',
+        ]);
+        $this->belongsTo('UserRoles', [
+            'foreignKey' => 'role_id',
+            'joinType' => 'INNER',
         ]);
     }
 
@@ -88,10 +97,8 @@ class UsersTable extends Table
             ->notEmptyString('password');
 
         $validator
-            ->scalar('role')
-            ->maxLength('role', 30)
-            ->requirePresence('role', 'create')
-            ->notEmptyString('role');
+            ->integer('role_id')
+            ->notEmptyString('role_id');
 
         $validator
             ->boolean('is_active')
@@ -110,6 +117,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
+        $rules->add($rules->existsIn(['role_id'], 'Roles'), ['errorField' => 'role_id']);
 
         return $rules;
     }

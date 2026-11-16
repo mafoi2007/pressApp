@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Role') ?></th>
-                    <td><?= h($user->role) ?></td>
+                    <td><?= $user->hasValue('role') ? $this->Html->link($user->role->id, ['controller' => 'UserRoles', 'action' => 'view', $user->role->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>

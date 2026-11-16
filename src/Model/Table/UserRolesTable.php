@@ -44,6 +44,10 @@ class UserRolesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Users', [
+            'foreignKey' => 'role_type',
+        ]);
     }
 
     /**

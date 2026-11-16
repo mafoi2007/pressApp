@@ -12,7 +12,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $username
  * @property string $password
- * @property string $role
+ * @property int $role_id
  * @property bool $is_active
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
@@ -20,6 +20,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\OrderStatusHistory[] $order_status_histories
  * @property \App\Model\Entity\Order[] $orders
  * @property \App\Model\Entity\Payment[] $payments
+ * @property \App\Model\Entity\UserRole $user_role
  */
 class User extends Entity
 {
@@ -36,13 +37,14 @@ class User extends Entity
         'name' => true,
         'username' => true,
         'password' => true,
-        'role' => true,
+        'role_id' => true,
         'is_active' => true,
         'created' => true,
         'modified' => true,
         'order_status_histories' => true,
         'orders' => true,
         'payments' => true,
+        'user_role' => true,
     ];
 
     /**

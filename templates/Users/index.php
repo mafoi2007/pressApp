@@ -14,7 +14,7 @@
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('username') ?></th>
-                    <th><?= $this->Paginator->sort('role') ?></th>
+                    <th><?= $this->Paginator->sort('role_id') ?></th>
                     <th><?= $this->Paginator->sort('is_active') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
@@ -27,7 +27,8 @@
                     <td><?= $this->Number->format($user->id) ?></td>
                     <td><?= h($user->name) ?></td>
                     <td><?= h($user->username) ?></td>
-                    <td><?= h($user->role) ?></td>
+                    <td><?= $user->hasValue('role') ? $this->Html->link($user->role->id, ['controller' => 'UserRoles', 'action' => 'view', $user->role->id]) : '' ?></td>
+                    <td><?= $user->hasValue('user_role') ? $this->Html->link($user->user_role->id, ['controller' => 'UserRoles', 'action' => 'view', $user->user_role->id]) : '' ?></td>
                     <td><?= h($user->is_active) ?></td>
                     <td><?= h($user->created) ?></td>
                     <td><?= h($user->modified) ?></td>

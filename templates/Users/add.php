@@ -2,6 +2,8 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+ * @var \Cake\Collection\CollectionInterface|string[] $roles
+ * @var \Cake\Collection\CollectionInterface|string[] $userRoles
  */
 ?>
 <div class="row">
@@ -20,7 +22,7 @@
                     echo $this->Form->control('name');
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('role');
+                    echo $this->Form->control('role_id', ['options' => $userRoles]);
                     echo $this->Form->control('is_active');
                 ?>
             </fieldset>

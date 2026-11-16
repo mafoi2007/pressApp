@@ -22,7 +22,7 @@
                     echo $this->Form->control('name');
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('role_id', ['options' => $userRoles]);
+                    echo $this->Form->control('role_type', ['options' => $userRoles]);
                     echo $this->Form->control('is_active');
                 ?>
             </fieldset>
